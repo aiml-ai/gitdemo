@@ -119,7 +119,7 @@ git push -u origin main
 | 查看工作区和暂存区之间的差异（未 `add`） | `git diff`                        |
 | 拉取远程仓库                             | 'git fetch'或者'git fetch 分支名' |
 | 合并到当前分支                           | git merge                         |
-
+| 查看远程和本地仓库                        | `git remote`                        |
 
 
 ------
