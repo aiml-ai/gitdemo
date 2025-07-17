@@ -201,8 +201,217 @@ git remote add origin https://github.com/你的用户名/demo.git
 git push -u origin main
 ```
 
-git commit 提交本地仓库
+### 八、git忽略提交
 
-git push 从本地到远程仓库
+#### **1. 从 Git 中移除文件（保留本地文件）**
 
-git pull 从远程仓库拉到本地来
+bash
+
+复制
+
+```bash
+git rm --cached <文件名或路径>
+```
+
+- 
+
+  作用
+
+  ：
+
+  - 从 Git 版本控制中移除该文件
+  - 本地文件会保留在磁盘中（不会被删除）
+  - 文件会变为 **未跟踪（Untracked）** 状态
+
+#### **2. 提交变更**
+
+bash
+
+复制
+
+```bash
+git commit -m "chore: 从 Git 中移除 <文件名>（保留本地文件）"
+```
+
+- 这一步会正式从 Git 历史中删除该文件的跟踪记录。
+
+#### **3. 重新添加文件（可选）**
+
+如果后续想重新让 Git 跟踪该文件（比如修改了 `.gitignore` 后）：
+
+bash
+
+复制
+
+```bash
+git add <文件名或路径>
+git commit -m "chore: 重新跟踪 <文件名>"
+```
+
+------
+
+### **常见使用场景**
+
+1. **误提交了敏感文件（如 `.env`、`node_modules`）**
+
+   - 用 `git rm --cached` 移除，并添加到 `.gitignore` 避免再次误提交。
+
+2. **停止跟踪某个大文件/中间文件**
+
+   - 保留本地文件，但不再纳入版本控制。
+
+3. **清理 Git 历史中的垃圾文件**
+
+   - 彻底从 Git 历史中删除文件（需配合 `git filter-branch` 或 `BFG`）。
+
+     git
+
+     ## **.gitignore 基本用法**
+
+     ### **1. 创建 `.gitignore` 文件**
+
+     在项目根目录下创建 `.gitignore` 文件：
+
+     bash
+
+     复制
+
+     ```bash
+     touch .gitignore
+     ```
+
+     或者直接编辑：
+
+     bash
+
+     复制
+
+     ```bash
+     vim .gitignore
+     ```
+
+     ------
+
+     ### **2. 语法规则**
+
+     |    语法    |       示例       |              说明               |
+     | :--------: | :--------------: | :-----------------------------: |
+     |  `文件名`  |    `temp.txt`    |    忽略所有 `temp.txt` 文件     |
+     | `目录名/`  |     `build/`     |      忽略整个 `build` 目录      |
+     | `*.扩展名` |     `*.log`      |      忽略所有 `.log` 文件       |
+     |  `!例外`   | `!important.log` |     不忽略 `important.log`      |
+     |  `# 注释`  |   `# 这是注释`   |       注释行，Git 会忽略        |
+     |   `**/`    |    `**/tmp/`     | 递归匹配所有子目录的 `tmp` 目录 |
+
+     ------
+
+     ### **3. 常用示例**
+
+     #### **忽略特定文件**
+
+     复制
+
+     ```markdown
+     # 忽略本地配置文件
+     .env
+     config.ini
+     ```
+
+     #### **忽略特定目录**
+
+     复制
+
+     ```markdown
+     # 忽略编译输出目录
+     bin/
+     build/
+     dist/
+     ```
+
+     #### **忽略特定扩展名**
+
+     复制
+
+     ```markdown
+     # 忽略日志文件
+     *.log
+     *.tmp
+     ```
+
+     #### **忽略所有子目录下的某个目录**
+
+     复制
+
+     ```markdown
+     # 忽略所有 node_modules 目录
+     **/node_modules/
+     ```
+
+     #### **例外规则（不忽略某些文件）**
+
+     复制
+
+     ```markdown
+     # 忽略所有 .txt 文件，但不包括 important.txt
+     *.txt
+     !important.txt
+     ```
+
+     ------
+
+     ### **4. 生效方式**
+
+     - **新文件**：`.gitignore` 对新创建的文件立即生效。
+
+     - 
+
+       已跟踪的文件
+
+       ：如果文件已经被 Git 跟踪（
+
+       ```
+       git add
+       ```
+
+        
+
+       过），需要先移除：
+
+       bash
+
+       复制
+
+       ```bash
+       git rm --cached <文件名>  # 从 Git 移除，但保留本地文件
+       git commit -m "停止跟踪 <文件名>"
+       ```
+
+     ------
+
+     ### **5. 全局 `.gitignore`（适用于所有项目）**
+
+     如果你想 **全局忽略某些文件**（如 IDE 配置文件），可以配置全局 `.gitignore`：
+
+     bash
+
+     复制
+
+     ```bash
+     git config --global core.excludesfile ~/.gitignore_global
+     ```
+
+     然后在 `~/.gitignore_global` 里添加规则（如 `.DS_Store`、`.vscode/`）。
+
+     ------
+
+     ### **6. 检查哪些文件被忽略**
+
+     bash
+
+     复制
+
+     ```bash
+     git status --ignored  # 查看被忽略的文件
+     ```
+
+     
