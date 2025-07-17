@@ -32,7 +32,7 @@ ssh-keygen -t rsa -b 4096 -C "994277989xin@gmail.com"
 
 
 
-## 🏗️ 四、常用 Git 操作流程
+## 🏗️ 二、常用 Git 操作流程
 
 ### 1. 创建/初始化本地仓库
 
@@ -74,7 +74,7 @@ git log
 
 ------
 
-## 🛰️ 五、连接远程仓库（如 GitHub）
+## 🛰️ 三、连接远程仓库（如 GitHub）
 
 ### 1. 先去 GitHub 创建一个仓库（网址：https://github.com）
 
@@ -102,27 +102,29 @@ git push -u origin main
 
 ------
 
-## 🔁 六、日常开发常用命令
+## 🔁 四、日常开发常用命令
 
-| 操作                                     | 命令                   |
-| ---------------------------------------- | ---------------------- |
-| 添加修改                                 | `git add 文件名`       |
-| 提交                                     | `git commit -m "说明"` |
-| 查看状态                                 | `git status`           |
-| 查看历史                                 | `git log`              |
-| 查看分支                                 | `git branch`           |
-| 新建分支                                 | `git branch 分支名`    |
-| 切换分支                                 | `git checkout 分支名`  |
-| 合并分支                                 | `git merge 分支名`     |
-| 拉取远程代码                             | `git pull`             |
-| 推送代码                                 | `git push`             |
-| 查看工作区和暂存区之间的差异（未 `add`） | `git diff`             |
+| 操作                                     | 命令                              |
+| ---------------------------------------- | --------------------------------- |
+| 添加修改                                 | `git add 文件名`                  |
+| 提交                                     | `git commit -m "说明"`            |
+| 查看状态                                 | `git status`                      |
+| 查看历史                                 | `git log`                         |
+| 查看分支                                 | `git branch`                      |
+| 新建分支                                 | `git branch 分支名`               |
+| 切换分支                                 | `git checkout 分支名`             |
+| 合并分支                                 | `git merge 分支名`                |
+| 拉取远程代码                             | `git pull`                        |
+| 推送代码                                 | `git push`                        |
+| 查看工作区和暂存区之间的差异（未 `add`） | `git diff`                        |
+| 拉取远程仓库                             | 'git fetch'或者'git fetch 分支名' |
+| 合并到当前分支                           | git merge                         |
 
 
 
 ------
 
-## 🧹 七、恢复与撤销
+## 🧹 五、恢复与撤销
 
 | 场景           | 命令                     |
 | -------------- | ------------------------ |
@@ -131,7 +133,7 @@ git push -u origin main
 | 撤销工作区修改 | `git checkout -- 文件名` |
 | 删除文件       | `git rm 文件名`          |
 
-##       八、git打标签
+##       六、git打标签
 
 | 操作     | 推荐方式                       |
 | -------- | ------------------------------ |
@@ -180,11 +182,7 @@ git tag -a v1.0.0 -m "Release version 1.0.0"
 
 这个标签就打在你刚刚提交的那个 commit 上。
 
-
-
-
-
-## 🧪 九、简单实战流程举例
+## 🧪 七、简单实战流程举例
 
 ```
 bash复制编辑# 创建一个项目目录并初始化 Git
@@ -201,8 +199,6 @@ git commit -m "添加 hello.txt"
 git remote add origin https://github.com/你的用户名/demo.git
 git push -u origin main
 ```
-
-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
 
 git commit 提交本地仓库
 
