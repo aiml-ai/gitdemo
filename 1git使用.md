@@ -266,7 +266,7 @@ git commit -m "chore: 重新跟踪 <文件名>"
 
      git
 
-     ## **.gitignore 基本用法**
+     # **.gitignore 基本用法**
 
      ### **1. 创建 `.gitignore` 文件**
 
