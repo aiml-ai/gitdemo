@@ -120,7 +120,8 @@ git push -u origin main
 | 拉取远程仓库                             | 'git fetch'或者'git fetch 分支名' |
 | 合并到当前分支                           | git merge                         |
 | 查看远程和本地仓库                        | `git remote -v`                        |
-
+| 推送所有标签                              | `git push origin --tags`               |
+| 推送单个标签                              | `git push origin v1.0.0`               |
 
 ------
 
